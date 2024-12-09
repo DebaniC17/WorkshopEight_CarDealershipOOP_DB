@@ -69,7 +69,7 @@ public class VehicleDAOImpl implements VehicleDAOInt {
             preparedStatement.setString(3, vehicle.getModel());
             preparedStatement.setString(4, vehicle.getColor());
             preparedStatement.setBoolean(5, vehicle.isSold());
-            preparedStatement.setInt(6, vehicle.getDealership_id());
+            preparedStatement.setInt(6, vehicle.getDealership_Id());
             int effectedRows = preparedStatement.executeUpdate();
             if(effectedRows < 1){
                 System.out.println("Error: Vehicle not added");
@@ -91,7 +91,7 @@ public class VehicleDAOImpl implements VehicleDAOInt {
             preparedStatement.setString(2, vehicle.getModel());
             preparedStatement.setString(3, vehicle.getColor());
             preparedStatement.setBoolean(4, vehicle.isSold());
-            preparedStatement.setInt(5, vehicle.getDealership_id());
+            preparedStatement.setInt(5, vehicle.getDealership_Id());
             preparedStatement.setString(6, vin);
 
             int rowsEffected = preparedStatement.executeUpdate();
