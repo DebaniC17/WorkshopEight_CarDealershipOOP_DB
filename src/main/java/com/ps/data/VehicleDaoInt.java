@@ -4,7 +4,7 @@ import com.ps.models.Vehicle;
 
 import java.util.List;
 
-public interface VehicleDAOInt {
+public interface VehicleDaoInt {
     public Vehicle getByVin(String vin);
     public List<Vehicle> getAll();
     public void create(Vehicle vehicle);

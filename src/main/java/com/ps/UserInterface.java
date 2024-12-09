@@ -1,6 +1,6 @@
 package com.ps;
 
-import com.ps.data.VehicleDAOImpl;
+import com.ps.data.VehicleDaoImpl;
 import com.ps.models.Vehicle;
 import org.apache.commons.dbcp2.BasicDataSource;
 
@@ -11,7 +11,7 @@ public class UserInterface {
     private static Scanner scanner = new Scanner(System.in);
     private static Scanner inputScanner = new Scanner(System.in);
     private static BasicDataSource basicDataSource = new BasicDataSource();
-    private static VehicleDAOImpl  vehicleDAOImpl = new VehicleDAOImpl(basicDataSource);
+    private static VehicleDaoImpl vehicleDAOImpl = new VehicleDaoImpl(basicDataSource);
 
 
     public static void init(){}

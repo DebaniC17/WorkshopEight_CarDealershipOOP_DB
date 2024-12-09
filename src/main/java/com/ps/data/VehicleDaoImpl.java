@@ -10,10 +10,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VehicleDAOImpl implements VehicleDAOInt {
+public class VehicleDaoImpl implements VehicleDaoInt {
     private DataSource dataSource;
 
-    public VehicleDAOImpl(DataSource dataSource) {
+    public VehicleDaoImpl(DataSource dataSource) {
         this.dataSource = dataSource;
     }
 
