@@ -5,8 +5,8 @@ public class SalesContract extends Contract {
     private static final double RECORDING_FEE = 100.00;
     private boolean isFinanced;
 
-    public SalesContract(String date, String customerName, String customerEmail, Vehicle vehicleSold, boolean isFinanced) {
-        super(date, customerName, customerEmail, vehicleSold);
+    public SalesContract(String startDate, String endDate, String customerName, String customerEmail, Vehicle vehicleSold, boolean isFinanced) {
+        super(startDate, endDate, customerName, customerEmail, vehicleSold);
         this.isFinanced = isFinanced;
     }
 

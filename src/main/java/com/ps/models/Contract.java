@@ -7,19 +7,28 @@ public abstract class Contract {
     private String customerEmail;
     private Vehicle vehicleSold;
 
-    public Contract(String date, String customerName, String customerEmail, Vehicle vehicleSold) {
-        this.date = date;
+    public Contract(String startDate, String endDate, String customerName, String customerEmail, Vehicle vehicleSold) {
+        this.startDate = startDate;
+        this.endDate = endDate;
         this.customerName = customerName;
         this.customerEmail = customerEmail;
         this.vehicleSold = vehicleSold;
     }
 
-    public String getDate() {
-        return date;
+    public String getStartDate() {
+        return startDate;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
     }
 
     public String getCustomerName() {
@@ -44,16 +53,6 @@ public abstract class Contract {
 
     public void setVehicleSold(Vehicle vehicleSold) {
         this.vehicleSold = vehicleSold;
-    }
-
-    @Override
-    public String toString() {
-        return "Contract{" +
-                "date='" + date + '\'' +
-                ", customerName='" + customerName + '\'' +
-                ", customerEmail='" + customerEmail + '\'' +
-                ", vehicleSold=" + vehicleSold +
-                '}';
     }
 
     public abstract double getTotalPrice();

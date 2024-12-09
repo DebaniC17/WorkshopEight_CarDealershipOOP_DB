@@ -9,6 +9,26 @@ public class Main {
     basicDataSource.setUsername(args[0]);
     basicDataSource.setPassword(args[1]);
 
+        UserInterface.display(basicDataSource.getUsername(), basicDataSource.getPassword());
+        // Create schema for Vehicles and Dealerships, SQL
+        // Create classes(OOP) for Vehicles and Dealerships
+
+        // Create the CLI User Interface (Vehicle CRUD)
+
+        // - Manage Vehicles
+        // - Get a vehicle by ID
+        // - Get all vehicles
+        // - Create a vehicle
+        // - Update a vehicle by ID
+        // - Delete a vehicle by ID
+        // Exit
+
+        // Create a VehicleDAO(Data Access Object) class
+        // - Vehicle getById(int id)
+        // - List<Vehicles> getAll()
+        // - void create(Vehicle vehicle)
+        // - void update(int id, Vehicle vehicle)
+        // - void delete(int id)
 
     }
 }

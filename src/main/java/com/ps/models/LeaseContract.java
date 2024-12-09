@@ -6,8 +6,8 @@ public class LeaseContract extends Contract{
     private static final double ANNUAL_INTEREST_RATE = 0.04;
     private static final int LEASE_TERM = 36;
 
-    public LeaseContract(String date, String customerName, String customerEmail, Vehicle vehicleSold) {
-        super(date, customerName, customerEmail, vehicleSold);
+    public LeaseContract(String startDate, String endDate, String customerName, String customerEmail, Vehicle vehicleSold) {
+        super(startDate, endDate, customerName, customerEmail, vehicleSold);
     }
     //make own getters for e.e.v.p and l.f
     public double getExpectedEndingValue() {
