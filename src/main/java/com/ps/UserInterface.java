@@ -1,4 +1,6 @@
-package com.ps.dealership;
+package com.ps;
+
+import com.ps.models.*;
 
 import java.time.LocalDate;
 import java.util.List;

@@ -1,7 +1,8 @@
-package com.ps.dealership;
+package com.ps.models;
 
 public abstract class Contract {
-    private String date;
+    private String startDate;
+    private String endDate;
     private String customerName;
     private String customerEmail;
     private Vehicle vehicleSold;

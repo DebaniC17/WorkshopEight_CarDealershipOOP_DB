@@ -1,4 +1,4 @@
-package com.ps.dealership;
+package com.ps.models;
 
 public class LeaseContract extends Contract{
     private static final double EXPECTED_ENDING_VALUE_PERCENTAGE = 0.50;

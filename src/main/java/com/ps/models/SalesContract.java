@@ -1,4 +1,4 @@
-package com.ps.dealership;
+package com.ps.models;
 
 public class SalesContract extends Contract {
     private static final double SALES_TAX_AMOUNT = 0.05;
