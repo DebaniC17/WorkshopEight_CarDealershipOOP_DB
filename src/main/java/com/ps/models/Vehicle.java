@@ -27,8 +27,8 @@ public class Vehicle {
         this.dealership_Id = dealership_Id;
     }
 
-    public Vehicle(Object o, String make, String model, String color, boolean sold, int dealershipId) {
-    }
+//    public Vehicle(Object o, String make, String model, String color, boolean sold, int dealershipId) {
+//    }
 
     public String  getVin() {
         return vin;

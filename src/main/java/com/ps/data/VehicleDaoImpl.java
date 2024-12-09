@@ -124,12 +124,16 @@ public class VehicleDaoImpl implements VehicleDaoInt {
 
     private Vehicle mapVehicle(ResultSet resultSet) throws SQLException {
         String vin = resultSet.getString("vin");
+        int year = resultSet.getInt("year");
         String make = resultSet.getString("make");
         String model = resultSet.getString("model");
+        String vehicleType = resultSet.getString("vehicle_type");
         String color = resultSet.getString("color");
+        int odometer = resultSet.getInt("odometer");
+        double price = resultSet.getDouble("price");
         boolean sold = resultSet.getBoolean("sold");
         int dealershipId = resultSet.getInt("dealership_id");
 
-        return new Vehicle(vin, make, model, color, sold, dealershipId);
+        return new Vehicle(vin, year, make, model, vehicleType, color, odometer, price, sold, dealershipId);
     }
 }

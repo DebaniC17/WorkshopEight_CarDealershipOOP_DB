@@ -1,5 +1,7 @@
 package com.ps;
 
+import com.ps.data.LeaseDaoImpl;
+import com.ps.data.SalesDaoImpl;
 import com.ps.data.VehicleDaoImpl;
 import com.ps.models.Vehicle;
 import org.apache.commons.dbcp2.BasicDataSource;
@@ -12,30 +14,37 @@ public class UserInterface {
     private static Scanner inputScanner = new Scanner(System.in);
     private static BasicDataSource basicDataSource = new BasicDataSource();
     private static VehicleDaoImpl vehicleDAOImpl = new VehicleDaoImpl(basicDataSource);
+    private static SalesDaoImpl salesDao;
+    private static LeaseDaoImpl leaseDao;
 
+    public static void init() {
+    }
 
-    public static void init(){}
-
-    public static void display(String username, String password){
+    public static void display(String username, String password) {
         basicDataSource.setUrl("jdbc:mysql://localhost:3306/dealership_db");
         basicDataSource.setUsername(username);
         basicDataSource.setPassword(password);
+        salesDao = new SalesDaoImpl(basicDataSource);
+        leaseDao = new LeaseDaoImpl(basicDataSource);
 
         init();
 
         int mainCommand;
 
-        do{
+        do {
             System.out.println("1) Manage Vehicles");
+            System.out.println("2) Manage Contracts");
             System.out.println("0) Exit");
             System.out.print("Command: ");
 
             mainCommand = scanner.nextInt();
 
-            switch(mainCommand){
+            switch (mainCommand) {
                 case 1:
                     handleManageVehicles();
                     break;
+                case 2:
+                    handleManageContracts();
                 case 0:
                     System.out.println("Exiting...");
                     break;
@@ -43,15 +52,15 @@ public class UserInterface {
                     System.out.println("Invalid command, please try again");
             }
 
-        } while(mainCommand != 0);
+        } while (mainCommand != 0);
 
     }
 
-    public static void handleManageVehicles(){
+    public static void handleManageVehicles() {
 
         int manageVehicleCommand;
 
-        do{
+        do {
             System.out.println("Manage Vehicles");
             System.out.println("1) Display vehicle by VIN");
             System.out.println("2) Display all vehicles");
@@ -63,7 +72,7 @@ public class UserInterface {
 
             manageVehicleCommand = scanner.nextInt();
 
-            switch(manageVehicleCommand){
+            switch (manageVehicleCommand) {
                 case 1:
                     handleGetVehicle();
                     break;
@@ -86,7 +95,7 @@ public class UserInterface {
                     System.out.println("Invalid command, please try again");
             }
 
-        } while(manageVehicleCommand != 0);
+        } while (manageVehicleCommand != 0);
     }
 
     private static void handleGetVehicle() {
@@ -134,22 +143,37 @@ public class UserInterface {
         vehicleDAOImpl.delete(inputVin);
     }
 
-    private static void printAllVehicles(){
+    private static void printAllVehicles() {
         List<Vehicle> inventory = vehicleDAOImpl.getAll();
-        for(Vehicle vehicle: inventory){
+        for (Vehicle vehicle : inventory) {
             System.out.printf("%s - %s %s \n", vehicle.getVin(), vehicle.getMake(), vehicle.getModel());
         }
     }
 
-    private static Vehicle getVehicleDetails(){
+    private static Vehicle getVehicleDetails() {
+        System.out.println("VIN: ");
+        String vin = inputScanner.nextLine();
+
+        System.out.println("Year: ");
+        int year = inputScanner.nextInt();
+
         System.out.print("Make: ");
         String make = inputScanner.nextLine();
 
         System.out.print("Model: ");
         String model = inputScanner.nextLine();
 
+        System.out.println("Vehicle Type: ");
+        String vehicleType = inputScanner.nextLine();
+
         System.out.print("Color: ");
         String color = inputScanner.nextLine();
+
+        System.out.println("Odometer: ");
+        int odometer = inputScanner.nextInt();
+
+        System.out.println("Price: ");
+        double price = inputScanner.nextDouble();
 
         System.out.print("Sold: ");
         boolean sold = inputScanner.nextBoolean();
@@ -157,7 +181,59 @@ public class UserInterface {
         System.out.println("Dealership Id: ");
         int dealershipId = inputScanner.nextInt();
 
-        return new Vehicle(null, make, model, color, sold, dealershipId);
+        return new Vehicle(vin, year, make, model, vehicleType, color, odometer, price, sold, dealershipId);
     }
+
+    private static void handleManageContracts() {
+        int contractCommand;
+
+        do {
+            System.out.println("Manage Contracts");
+            System.out.println("1) Add Sales Contract");
+            System.out.println("2) Add Lease Contract");
+            System.out.println("3) Display All Sales Contract");
+            System.out.println("4) Display All Lease Contract");
+            System.out.println("0) Go Back To Main Menu");
+            System.out.print("Command: ");
+
+            contractCommand = scanner.nextInt();
+
+            switch (contractCommand) {
+                case 1:
+                    addSalesContract();
+                    break;
+                case 2:
+                    addLeaseContract();
+                    break;
+                case 3:
+                    displaySalesContract();
+                    break;
+                case 4:
+                    displayLeaseContracts();
+                case 0:
+                    System.out.println("Going Back To Main Menu...");
+                    break;
+                default:
+                    System.out.println("Command not found, please try again.");
+
+
+            }
+        } while (contractCommand != 0);
+
+    }
+
+    private static void addSalesContract() {
+
+    }
+
+    private static void addLeaseContract() {
+    }
+
+    private static void displaySalesContract() {
+    }
+
+    private static void displayLeaseContracts() {
+    }
+
 
 }

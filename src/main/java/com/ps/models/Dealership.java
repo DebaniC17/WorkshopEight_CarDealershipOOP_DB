@@ -1,29 +1,25 @@
 package com.ps.models;
 
-import java.util.ArrayList;
+import com.ps.data.LeaseDaoImpl;
+import com.ps.data.SalesDaoImpl;
+
+import java.util.List;
 
 public class Dealership {
     private int dealershipId;
     private String name;
     private String address;
     private String phone;
-    private ArrayList<Vehicle> inventory; //..might be unnecessary
+    private SalesDaoImpl salesDao;
+    private LeaseDaoImpl leaseDao;
 
-    public Dealership() {}
-
-    public Dealership(String phone, String address, String name, int dealershipId) {
-        this.phone = phone;
-        this.address = address;
-        this.name = name;
-        this.dealershipId = dealershipId;
-    }
-
-    public Dealership(int dealershipId, String name, String address, String phone, ArrayList<Vehicle> inventory) {
+    public Dealership(int dealershipId, String name, String address, String phone, SalesDaoImpl salesDao, LeaseDaoImpl leaseDao) {
         this.dealershipId = dealershipId;
         this.name = name;
         this.address = address;
         this.phone = phone;
-        this.inventory = inventory;
+        this.salesDao = salesDao;
+        this.leaseDao = leaseDao;
     }
 
     public int getDealershipId() {
@@ -58,22 +54,33 @@ public class Dealership {
         this.phone = phone;
     }
 
-    public ArrayList<Vehicle> getInventory() {
-        return inventory;
+    public SalesDaoImpl getSalesDao() {
+        return salesDao;
     }
 
-    public void setInventory(ArrayList<Vehicle> inventory) {
-        this.inventory = inventory;
+    public void setSalesDao(SalesDaoImpl salesDao) {
+        this.salesDao = salesDao;
     }
 
-    @Override
-    public String toString() {
-        return "Dealership{" +
-                "dealershipId=" + dealershipId +
-                ", name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", phone='" + phone + '\'' +
-                ", inventory=" + inventory +
-                '}';
+    public LeaseDaoImpl getLeaseDao() {
+        return leaseDao;
+    }
+
+    public void setLeaseDao(LeaseDaoImpl leaseDao) {
+        this.leaseDao = leaseDao;
+    }
+
+    public void addSalesContract(SalesContract contract) {
+        salesDao.create(contract);
+    }
+    public List<SalesContract> getAllSalesContracts() {
+        return salesDao.getAll();
+    }
+
+    public void addLeaseContract(LeaseContract contract) {
+        leaseDao.create(contract);
+    }
+    public List<LeaseContract> getAllLeaseContracts() {
+        return leaseDao.getAll();
     }
 }
